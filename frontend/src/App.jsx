@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { FiEdit2, FiTrash2, FiPlus, FiBookOpen, FiLogOut } from 'react-icons/fi';
 import * as api from './api';
@@ -162,12 +162,12 @@ const App = () => {
   if (loading) return null;
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={!authUser ? <Login setAuthUser={setAuthUser} /> : <Navigate to="/" />} />
         <Route path="/" element={authUser ? <Dashboard user={authUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
